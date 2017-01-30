@@ -36,7 +36,7 @@ public class CommandResult {
     /**
      * Returns feedbackToUser when method is called
      */
-    public String getFeedbackToUer() {
+    public String getFeedbackToUser() {
     	return feedbackToUser;
     }
     
