@@ -17,12 +17,12 @@ public class CommandResult {
     private final List<? extends ReadOnlyPerson> relevantPersons;
 
     public CommandResult(String feedbackToUser) {
-        this.feedbackToUser = feedbackToUser;
+        this.feedbackToUser = getFeedbackToUser();
         relevantPersons = null;
     }
 
     public CommandResult(String feedbackToUser, List<? extends ReadOnlyPerson> relevantPersons) {
-        this.feedbackToUser = feedbackToUser;
+        this.feedbackToUser = getFeedbackToUser();
         this.relevantPersons = relevantPersons;
     }
 
