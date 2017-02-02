@@ -27,19 +27,21 @@ public class Address {
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
         String trimmedAddress = address.trim();
+        String[] separatedAddress = separateAddress();
         this.isPrivate = isPrivate;
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
+        } else {
+            Block blockNumber = new Block(separatedAddress[BLOCK_NUMBER_INDEX].trim());
+            Street streetName = new Street(separatedAddress[STREET_NAME_INDEX].trim());
+            Unit unitNumber = new Unit(separatedAddress[UNIT_NUMBER_INDEX].trim());
+            PostalCode postalCodeNumber = new PostalCode(separatedAddress[POSTAL_CODE_INDEX].trim());
         }
         this.trimmedAddress = trimmedAddress;
     }
     
-    private String[] splitAddress() {
+    private String[] separateAddress() {
         String[] addressArray = trimmedAddress.split(",");
-        Block blockNumber = new Block(addressArray[BLOCK_NUMBER_INDEX].trim());
-        Street streetName = new Street(addressArray[STREET_NAME_INDEX].trim());
-        Unit unitNumber = new Unit(addressArray[UNIT_NUMBER_INDEX].trim());
-        PostalCode postalCodeNumber = new PostalCode(addressArray[POSTAL_CODE_INDEX].trim());
         return addressArray;
     }
 
