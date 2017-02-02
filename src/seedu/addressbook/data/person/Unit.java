@@ -6,7 +6,7 @@ public class Unit {
 	 * Represents a Person's unit in address
 	 */
 	
-	public static final String UNIT_VALIDATION_REGEX = "[\\p{Punct}\\d{2}-?\\d+]";
+	public static final String UNIT_VALIDATION_REGEX = "[#\\d{2}-?\\d+]";
 	private String unitNumber;
 	
 	public Unit(String unit) {
