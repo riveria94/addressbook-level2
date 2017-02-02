@@ -9,15 +9,15 @@ public class Formatter {
 
     private static final String DIVIDER = "===================================================";
     
-    public String getLinePrefix() {
+    public static String getLinePrefix() {
     	return LINE_PREFIX;
     }
     
-    public String getLineSeparator() {
+    public static String getLineSeparator() {
     	return LS;
     }
     
-    public String getDivider() {
+    public static String getDivider() {
     	return DIVIDER;
     }
 }

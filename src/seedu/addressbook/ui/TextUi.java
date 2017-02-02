@@ -4,6 +4,7 @@ import static seedu.addressbook.common.Messages.*;
 
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.ui.Formatter;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -16,14 +17,6 @@ import java.util.Scanner;
  * Text UI of the application.
  */
 public class TextUi {
-
-    /** A decorative prefix added to the beginning of lines printed by AddressBook */
-    private static final String LINE_PREFIX = "|| ";
-
-    /** A platform independent line separator. */
-    private static final String LS = System.lineSeparator();
-
-    private static final String DIVIDER = "===================================================";
 
     /** Format of indexed list item */
     private static final String MESSAGE_INDEXED_LIST_ITEM = "\t%1$d. %2$s";
@@ -75,7 +68,7 @@ public class TextUi {
      * @return command (full line) entered by the user
      */
     public String getUserCommand() {
-        out.print(LINE_PREFIX + "Enter command: ");
+        out.print(Formatter.getLinePrefix() + "Enter command: ");
         String fullInputLine = in.nextLine();
 
         // silently consume all ignored lines
@@ -91,28 +84,29 @@ public class TextUi {
     public void showWelcomeMessage(String version, String storageFilePath) {
         String storageFileInfo = String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
         showToUser(
-                DIVIDER,
-                DIVIDER,
+                Formatter.getDivider(),
+                Formatter.getDivider(),
                 MESSAGE_WELCOME,
                 version,
                 MESSAGE_PROGRAM_LAUNCH_ARGS_USAGE,
                 storageFileInfo,
-                DIVIDER);
+                Formatter.getDivider());
     }
 
     public void showGoodbyeMessage() {
-        showToUser(MESSAGE_GOODBYE, DIVIDER, DIVIDER);
+        showToUser(MESSAGE_GOODBYE, Formatter.getDivider(), Formatter.getDivider());
     }
 
 
     public void showInitFailedMessage() {
-        showToUser(MESSAGE_INIT_FAILED, DIVIDER, DIVIDER);
+        showToUser(MESSAGE_INIT_FAILED, Formatter.getDivider(), Formatter.getDivider());
     }
 
     /** Shows message(s) to the user */
     public void showToUser(String... message) {
         for (String m : message) {
-            out.println(LINE_PREFIX + m.replace("\n", LS + LINE_PREFIX));
+            out.println(Formatter.getLinePrefix() + m.replace("\n", 
+            		Formatter.getLineSeparator() + Formatter.getLinePrefix()));
         }
     }
 
@@ -125,7 +119,7 @@ public class TextUi {
         if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
         }
-        showToUser(result.feedbackToUser, DIVIDER);
+        showToUser(result.feedbackToUser, Formatter.getDivider());
     }
 
     /**
