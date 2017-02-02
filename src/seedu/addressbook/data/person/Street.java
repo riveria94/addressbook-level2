@@ -5,7 +5,8 @@ public class Street {
 	/**
 	 * Represents a Person's street in address
 	 */
-
+	
+	public static final String STREET_VALIDATION_REGEX ="\\w+";
 	private String streetName;
 	
 	public Street(String street) {
@@ -14,5 +15,8 @@ public class Street {
 	
 	public String getStreetName() {
 		return streetName;
+	}
+	public boolean isValidStreet(String test) {
+		return test.matches(STREET_VALIDATION_REGEX);
 	}
 }
