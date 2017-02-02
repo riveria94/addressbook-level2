@@ -5,7 +5,7 @@ public class Street {
 	/**
 	 * Represents a Person's street in address
 	 */
-	
+
 	private String streetName;
 	
 	public Street(String street) {
@@ -15,5 +15,4 @@ public class Street {
 	public String getStreetName() {
 		return streetName;
 	}
-	
 }
