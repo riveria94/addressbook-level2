@@ -8,13 +8,18 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Address {
 
-    public static final String EXAMPLE = "123, some street";
-    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
+    public static final String EXAMPLE = "123, some street, some unit, some postal code";
+    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses to be entered as block, street, unit, postal code";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
-
-    public final String value;
+    
+    public static final int BLOCK_NUMBER_INDEX = 1;
+    public static final int STREET_NAME_INDEX = 2;
+    public static final int UNIT_NUMBER_INDEX = 3;
+    public static final int POSTAL_CODE_INDEX = 4;
+    
+    public final String trimmedAddress;
     private boolean isPrivate;
-
+    
     /**
      * Validates given address.
      *
@@ -26,7 +31,16 @@ public class Address {
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
-        this.value = trimmedAddress;
+        this.trimmedAddress = trimmedAddress;
+    }
+    
+    private String[] splitAddress() {
+        String[] addressArray = trimmedAddress.split(",");
+        Block blockNumber = new Block(addressArray[BLOCK_NUMBER_INDEX].trim());
+        Street streetName = new Street(addressArray[STREET_NAME_INDEX].trim());
+        Unit unitNumber = new Unit(addressArray[UNIT_NUMBER_INDEX].trim());
+        PostalCode postalCodeNumber = new PostalCode(addressArray[POSTAL_CODE_INDEX].trim());
+        return addressArray;
     }
 
     /**
@@ -56,4 +70,5 @@ public class Address {
     public boolean isPrivate() {
         return isPrivate;
     }
+    
 }
