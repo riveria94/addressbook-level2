@@ -16,7 +16,7 @@ public class Unit {
 	public String getUnitNumber() {
 		return unitNumber;
 	}
-	public boolean isValidUnit(String test) {
-		return test.matches(UNIT_VALIDATION_REGEX);
+	public boolean isValidUnit(Unit test) {
+		return test.getUnitNumber().matches(UNIT_VALIDATION_REGEX);
 	}
 }

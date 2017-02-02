@@ -16,7 +16,7 @@ public class PostalCode {
 	public String getPostalCodeNumber() {
 		return postalCodeNumber;
 	}
-	public boolean isValidPostalCode(String test) {
-		return test.matches(POSTALCODE_VALIDATION_REGEX);
+	public boolean isValidPostalCode(PostalCode test) {
+		return test.getPostalCodeNumber().matches(POSTALCODE_VALIDATION_REGEX);
 	}
 }

@@ -16,7 +16,7 @@ public class Street {
 	public String getStreetName() {
 		return streetName;
 	}
-	public boolean isValidStreet(String test) {
-		return test.matches(STREET_VALIDATION_REGEX);
+	public boolean isValidStreet(Street test) {
+		return test.getStreetName().matches(STREET_VALIDATION_REGEX);
 	}
 }

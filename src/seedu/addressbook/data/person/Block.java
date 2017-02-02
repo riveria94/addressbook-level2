@@ -17,8 +17,8 @@ public class Block {
 		return blockNumber;
 	}
 	
-	public boolean isValidBlock(String test) {
-		return test.matches(BLOCK_VALIDATION_REGEX);
+	public boolean isValidBlock(Block test) {
+		return test.getBlockNumber().matches(BLOCK_VALIDATION_REGEX);
 	}
 	
 }
