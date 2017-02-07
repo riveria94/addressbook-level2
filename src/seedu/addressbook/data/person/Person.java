@@ -14,8 +14,10 @@ public class Person implements ReadOnlyPerson {
     private Phone phone;
     private Email email;
     private Address address;
+    private int sequenceNumber;
 
     private final UniqueTagList tags;
+    private final int nextSequenceNumber = 0;
     /**
      * Assumption: Every field must be present and not null.
      */
@@ -24,6 +26,7 @@ public class Person implements ReadOnlyPerson {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.sequenceNumber = incrementSequenceNumber(nextSequenceNumber);
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
     }
 
@@ -82,6 +85,13 @@ public class Person implements ReadOnlyPerson {
     @Override
     public String toString() {
         return getAsTextShowAll();
+    }
+    
+    /**
+     * Increases the sequence number according to the number of persons added.
+     */
+    private int incrementSequenceNumber(int nextSequenceNumber) {
+    	return nextSequenceNumber += 1;
     }
 
 }
