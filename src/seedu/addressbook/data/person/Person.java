@@ -84,9 +84,4 @@ public class Person implements ReadOnlyPerson {
         return getAsTextShowAll();
     }
     
-    @Override
-    public String getPrintableString() {
-    	return 0
-    }
-    
 }
